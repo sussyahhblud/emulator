@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmulatorJS - Retro Gaming Emulator</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/libarchive.js@1.3.0/dist/libarchive.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #000000 50%, #0d0d0d 75%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            animation: fadeIn 0.8s ease-in;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(65, 105, 225, 0.5), 0 0 40px rgba(65, 105, 225, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(65, 105, 225, 0.8), 0 0 60px rgba(65, 105, 225, 0.5); }
+        }
+
+        .page-slider {
+            width: 100%;
+            max-width: 1200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pages-container {
+            display: flex;
+            width: 200%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pages-container.show-library {
+            transform: translateX(-50%);
+        }
+
+        .page {
+            width: 50%;
+            flex-shrink: 0;
+            padding: 0 10px;
+        }
+
+        .container {
+            width: 100%;
+            background: linear-gradient(145deg, #1e3a8a, #1a3278);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(65, 105, 225, 0.2);
+            border: 2px solid rgba(65, 105, 225, 0.3);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(65, 105, 225, 0.3);
+            position: relative;
+        }
+
+        .header-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-arrow {
+            background: linear-gradient(135deg, #4169E1 0%, #5B7FE8 100%);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.4);
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(65, 105, 225, 0.6);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #FFFFFF, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(65, 105, 225, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(65, 105, 225, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .setup-panel {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.6), rgba(26, 50, 120, 0.4));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(65, 105, 225, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .setup-panel:hover {
+            border-color: rgba(65, 105, 225, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(65, 105, 225, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+            padding: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 1.15em;
+            color: #E8EEFF;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        select, input[type="file"], input[type="text"] {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(65, 105, 225, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        select:hover, input[type="file"]:hover, input[type="text"]:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(65, 105, 225, 0.6);
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.2);
+        }
+
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #4169E1;
+            box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.2);
+        }
+
+        select option {
+            background: #000000;
+            color: #fff;
+            padding: 12px;
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            overflow: visible;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 30px;
+            background: linear-gradient(135deg, #4169E1 0%, #5B7FE8 100%);
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px dashed rgba(255, 255, 255, 0.4);
+            font-size: 1.1em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(65, 105, 225, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-upload-label::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .file-upload-label:hover::before {
+            left: 100%;
+        }
+
+        .file-upload-label:hover {
+            background: linear-gradient(135deg, #5B7FE8 0%, #6B8FF5 100%);
+            border-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(65, 105, 225, 0.5);
+        }
+
+        input[type="file"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4169E1 0%, #5B7FE8 50%, #6B8FF5 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(65, 105, 225, 0.4), 0 0 40px rgba(65, 105, 225, 0.2);
+            border: 2px solid rgba(65, 105, 225, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(65, 105, 225, 0.6), 0 0 60px rgba(65, 105, 225, 0.3);
+            border-color: rgba(65, 105, 225, 0.8);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(1);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-primary:disabled:hover {
+            transform: none;
+        }
+
+        #game-container {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #game {
+            width: 100%;
+            height: 70vh;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .info-box {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.5), rgba(26, 50, 120, 0.3));
+            backdrop-filter: blur(10px);
+            border-left: 5px solid #4169E1;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(65, 105, 225, 0.2);
+            border-left: 5px solid #4169E1;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            border-color: rgba(65, 105, 225, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(65, 105, 225, 0.1);
+            transform: translateX(5px);
+        }
+
+        .info-box h3 {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box ul {
+            margin-left: 25px;
+            line-height: 1.8;
+        }
+
+        .info-box li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .controls-info {
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.4), rgba(26, 50, 120, 0.2));
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            border: 2px solid rgba(65, 105, 225, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .controls-info:hover {
+            border-color: rgba(65, 105, 225, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .controls-info h4 {
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            color: #E8EEFF;
+            font-weight: 700;
+        }
+
+        .controls-info p {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .status-message {
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            display: none;
+            font-weight: 600;
+            font-size: 1em;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(76, 175, 80, 0.2));
+            border: 2px solid #4CAF50;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .status-error {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.3), rgba(244, 67, 54, 0.2));
+            border: 2px solid #f44336;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+        }
+
+        .search-bar {
+            margin-bottom: 25px;
+        }
+
+        .search-bar input {
+            cursor: text;
+        }
+
+        .console-group {
+            margin-bottom: 20px;
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.4), rgba(26, 50, 120, 0.2));
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(65, 105, 225, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .console-group:hover {
+            border-color: rgba(65, 105, 225, 0.4);
+        }
+
+        .console-header {
+            padding: 20px 25px;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.3), rgba(65, 105, 225, 0.2));
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .console-header:hover {
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.4), rgba(65, 105, 225, 0.3));
+        }
+
+        .console-header h3 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .console-arrow {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .console-arrow.expanded {
+            transform: rotate(90deg);
+        }
+
+        .rom-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .rom-list.expanded {
+            max-height: 2000px;
+        }
+
+        .rom-item {
+            padding: 18px 25px;
+            border-bottom: 1px solid rgba(65, 105, 225, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .rom-item:last-child {
+            border-bottom: none;
+        }
+
+        .rom-item:hover {
+            background: rgba(65, 105, 225, 0.2);
+            padding-left: 35px;
+        }
+
+        .rom-name {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .rom-format {
+            background: rgba(65, 105, 225, 0.4);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .rom-format.zip {
+            background: rgba(76, 175, 80, 0.4);
+        }
+
+        .rom-format.z64 {
+            background: rgba(33, 150, 243, 0.4);
+        }
+
+        .rom-format.7z {
+            background: rgba(255, 152, 0, 0.4);
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(65, 105, 225, 0.2);
+            border-top: 4px solid #4169E1;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .container {
+                padding: 25px;
+            }
+
+            #game {
+                height: 50vh;
+            }
+
+            .btn {
+                font-size: 1em;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .header-content {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-slider">
+        <div class="pages-container" id="pages-container">
+            <div class="page">
+                <div class="container">
+                    <div class="header">
+                        <div class="header-content">
+                            <h1>EmulatorJS</h1>
+                            <button class="nav-arrow" id="nav-arrow" title="ROM Library">➜</button>
+                        </div>
+                        <p class="subtitle">Play Your Favorite Retro Games in the Browser</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>📋 Quick Start Guide</h3>
+                        <ul>
+                            <li>Select your gaming system from the dropdown below</li>
+                            <li>Upload a ROM file for that system (supports .7z, .zip, and other formats)</li>
+                            <li>Click "Start Game" to begin playing</li>
+                            <li>Use keyboard or gamepad to control the game</li>
+                        </ul>
+                    </div>
+
+                    <div class="setup-panel">
+                        <div class="form-group">
+                            <label for="system-select">Select Gaming System:</label>
+                            <select id="system-select">
+                                <option value="">-- Choose a System --</option>
+                                <option value="nes">Nintendo Entertainment System (NES)</option>
+                                <option value="snes">Super Nintendo (SNES)</option>
+                                <option value="gb">Game Boy</option>
+                                <option value="gba">Game Boy Advance</option>
+                                <option value="gbc">Game Boy Color</option>
+                                <option value="n64">Nintendo 64</option>
+                                <option value="nds">Nintendo DS</option>
+                                <option value="segaMD">Sega Genesis / Mega Drive</option>
+                                <option value="segaMS">Sega Master System</option>
+                                <option value="segaGG">Sega Game Gear</option>
+                                <option value="segaSaturn">Sega Saturn</option>
+                                <option value="segaCD">Sega CD</option>
+                                <option value="sega32x">Sega 32X</option>
+                                <option value="atari2600">Atari 2600</option>
+                                <option value="atari7800">Atari 7800</option>
+                                <option value="lynx">Atari Lynx</option>
+                                <option value="jaguar">Atari Jaguar</option>
+                                <option value="psx">PlayStation 1</option>
+                                <option value="vb">Virtual Boy</option>
+                                <option value="ngp">Neo Geo Pocket</option>
+                                <option value="ngc">Neo Geo Pocket Color</option>
+                                <option value="ws">WonderSwan</option>
+                                <option value="wsc">WonderSwan Color</option>
+                                <option value="pce">PC Engine / TurboGrafx-16</option>
+                                <option value="arcade">Arcade (MAME)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rom-upload">Upload ROM File:</label>
+                            <div class="file-upload-wrapper">
+                                <label for="rom-upload" class="file-upload-label" id="file-label">
+                                    📁 Click to Select ROM File or Drag & Drop
+                                </label>
+                                <input type="file" id="rom-upload" accept=".nes,.smc,.sfc,.gb,.gba,.gbc,.z64,.n64,.v64,.nds,.bin,.gen,.md,.sms,.gg,.iso,.cue,.a26,.a78,.lnx,.jag,.cue,.ngp,.ngc,.ws,.wsc,.pce,.zip,.7z">
+                            </div>
+                            <p id="file-name" style="margin-top: 10px; font-style: italic;"></p>
+                        </div>
+
+                        <button class="btn btn-primary" id="start-btn" disabled>Start Game</button>
+                        
+                        <div id="status-message" class="status-message"></div>
+                    </div>
+
+                    <div class="controls-info">
+                        <h4>🎮 Controls:</h4>
+                        <p><strong>Keyboard:</strong> Arrow Keys = D-Pad | Z/X = A/B | Enter = Start | Shift = Select</p>
+                        <p><strong>Save/Load:</strong> Press Shift+F2 to save state | Shift+F4 to load state</p>
+                        <p><strong>Gamepad:</strong> Connect a gamepad for native controller support</p>
+                    </div>
+
+                    <div id="game-container">
+                        <div id="game"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="container">
+                    <div class="header">
+                        <div class="header-content">
+                            <button class="nav-arrow" id="nav-arrow-back" title="Upload ROM">⬅</button>
+                            <h1>ROM Library</h1>
+                        </div>
+                        <p class="subtitle">Browse and Play Pre-loaded ROMs</p>
+                    </div>
+
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="🔍 Search ROMs...">
+                    </div>
+
+                    <div class="loading-spinner" id="loading-spinner">
+                        <div class="spinner"></div>
+                        <p style="margin-top: 15px;">Loading ROM library...</p>
+                    </div>
+
+                    <div id="rom-library"></div>
+
+                    <div id="status-message-library" class="status-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ROM_MANIFEST = {"snes":{"name":"Super Nintendo (SNES)","code":"snes","roms":[{"name":"Captain America and the Avengers","file":"Captain America and the Avengers (Europe).7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Captain%20America%20and%20the%20Avengers%20(Europe).7z","format":"7z"},{"name":"Captain Commando","file":"Captain Commando (U).7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Captain%20Commando%20(U).7z","format":"7z"},{"name":"Chrono Trigger","file":"Chrono Trigger (USA).7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Chrono%20Trigger%20(USA).7z","format":"7z"},{"name":"Clock Tower","file":"Clock Tower.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Clock%20Tower.7z","format":"7z"},{"name":"Donkey Kong Country","file":"Donkey Kong Country (USA) (Rev 2).7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Donkey%20Kong%20Country%20(USA)%20(Rev%202).7z","format":"7z"},{"name":"Dragon Ball Z - Hyper Dimension","file":"Dragon Ball Z - Hyper Dimension.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Dragon%20Ball%20Z%20-%20Hyper%20Dimension.7z","format":"7z"},{"name":"Earthbound","file":"Earthbound.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Earthbound.7z","format":"7z"},{"name":"Final Fantasy III","file":"Final Fantasy III (USA) (Rev 1).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fantasy%20III%20(USA)%20(Rev%201).zip","format":"zip"},{"name":"Final Fight","file":"Final Fight.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fight.7z","format":"7z"},{"name":"Final Fight 2","file":"Final Fight 2.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fight%202.7z","format":"7z"},{"name":"Final Fight 3","file":"Final Fight 3.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fight%203.7z","format":"7z"}]},"n64":{"name":"Nintendo 64","code":"n64","roms":[{"name":"Banjo-Kazooie","file":"Banjo-Kazooie.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Banjo-Kazooie.7z","format":"7z"},{"name":"Cruis'n World","file":"Cruis'n World.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Cruis'n%20World.7z","format":"7z"},{"name":"Paper Mario","file":"Paper Mario.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Paper%20Mario.7z","format":"7z"},{"name":"Quake 64","file":"Quake 64.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Quake%2064.7z","format":"7z"},{"name":"Quake II","file":"Quake II.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Quake%20II.7z","format":"7z"},{"name":"Super Mario 64 (ES)","file":"Super Mario 64.es.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Super%20Mario%2064.es.7z","format":"7z"},{"name":"Zelda: Majora's Mask","file":"The Legend of Zelda - Majora's Mask.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/The%20Legend%20of%20Zelda%20-%20Majora's%20Mask.7z","format":"7z"},{"name":"Zelda: Ocarina of Time (Master Quest)","file":"The Legend of Zelda - Ocarina of Time - Master Quest (E) [!].z64","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/The%20Legend%20of%20Zelda%20-%20Ocarina%20of%20Time%20-%20Master%20Quest%20(E)%20%5B!%5D.z64","format":"z64"},{"name":"Zelda: Ocarina of Time (ES)","file":"The Legend of Zelda - Ocarina of Time.es.z64","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/The%20Legend%20of%20Zelda%20-%20Ocarina%20of%20Time.es.z64","format":"z64"},{"name":"Turok: Dinosaur Hunter","file":"Turok - Dinosaur Hunter.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Turok%20-%20Dinosaur%20Hunter.7z","format":"7z"},{"name":"WinBack: Covert Operations","file":"WinBack - Covert Operations.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/WinBack%20-%20Covert%20Operations.7z","format":"7z"}]},"gba":{"name":"Game Boy Advance","code":"gba","roms":[{"name":"Dragon Ball: Advanced Adventure","file":"Dragon Ball - Advanced Adventure (Europe) (En,Fr,De,Es,It).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20-%20Advanced%20Adventure%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip","format":"zip"},{"name":"Dragon Ball Z: Buu's Fury","file":"Dragon Ball Z - Buu's Fury (USA).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20Z%20-%20Buu's%20Fury%20(USA).zip","format":"zip"},{"name":"Dragon Ball Z: Legacy of Goku","file":"Dragon Ball Z - The Legacy of Goku (Europe) (En,Fr,De,Es,It).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20Z%20-%20The%20Legacy%20of%20Goku%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip","format":"zip"},{"name":"Dragon Ball Z: Legacy of Goku II","file":"Dragon Ball Z - The Legacy of Goku II (Europe) (En,Fr,De,Es,It).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20Z%20-%20The%20Legacy%20of%20Goku%20II%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip","format":"zip"},{"name":"Final Fantasy VI Advance (ES)","file":"Final Fantasy VI Advance.es.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Final%20Fantasy%20VI%20Advance.es.7z","format":"7z"},{"name":"Golden Sun","file":"Golden Sun (USA, Europe).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Golden%20Sun%20(USA%2C%20Europe).zip","format":"zip"},{"name":"Kingdom Hearts: Chain of Memories","file":"Kingdom Hearts - Chain of Memories (USA).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Kingdom%20Hearts%20-%20Chain%20of%20Memories%20(USA).zip","format":"zip"},{"name":"Zelda: A Link to the Past & Four Swords","file":"Legend of Zelda, The - A Link to the Past & Four Swords (Europe) (En,Fr,De,Es,It).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Legend%20of%20Zelda%2C%20The%20-%20A%20Link%20to%20the%20Past%20%26%20Four%20Swords%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip","format":"zip"},{"name":"Pokemon Emerald","file":"Pokemon - Emerald Version (USA, Europe).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Pokemon%20-%20Emerald%20Version%20(USA%2C%20Europe).zip","format":"zip"},{"name":"Pokemon Esmeralda (ES)","file":"Pokemon - Edicion Esmeralda (Spain).zip","url":"https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Pokemon%20-%20Edicion%20Esmeralda%20(Spain).zip","format":"zip"}]},"segaMD":{"name":"Sega Genesis / Mega Drive","code":"segaMD","roms":[{"name":"Comix Zone","file":"Comix Zone.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Comix%20Zone.7z","format":"7z"},{"name":"ECCO the Dolphin","file":"ECCO.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/ECCO.7z","format":"7z"},{"name":"FIFA Soccer 98","file":"FIFA Soccer 98 - Road to the World Cup.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/FIFA%20Soccer%2098%20-%20Road%20to%20the%20World%20Cup.7z","format":"7z"},{"name":"Jurassic Park: Rampage Edition","file":"Jurassic Park - Rampage Edition.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Jurassic%20Park%20-%20Rampage%20Edition.7z","format":"7z"},{"name":"Michael Jackson's Moonwalker","file":"Michael Jackson's Moonwalker.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Michael%20Jackson's%20Moonwalker.7z","format":"7z"},{"name":"Phantasy Star IV","file":"Phantasy Star - The End of the Millenium.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Phantasy%20Star%20-%20The%20End%20of%20the%20Millenium.7z","format":"7z"},{"name":"Pirates! Gold","file":"Pirates! Gold.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Pirates!%20Gold.7z","format":"7z"},{"name":"River City Ransom","file":"River City Ransom.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/River%20City%20Ransom.7z","format":"7z"},{"name":"Sensible Soccer","file":"Sensible Soccer - International Edition.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Sensible%20Soccer%20-%20International%20Edition.7z","format":"7z"},{"name":"Shadowrun","file":"Shadowrun (USA).7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Shadowrun%20(USA).7z","format":"7z"},{"name":"Streets of Rage","file":"Streets of Rage.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Streets%20of%20Rage.7z","format":"7z"},{"name":"Streets of Rage 2","file":"Streets of Rage 2.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Streets%20of%20Rage%202.7z","format":"7z"},{"name":"Streets of Rage 3","file":"Streets of Rage 3.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Streets%20of%20Rage%203.7z","format":"7z"}]},"nes":{"name":"Nintendo Entertainment System (NES)","code":"nes","roms":[{"name":"Kings of the Beach","file":"Kings of the Beach.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Kings%20of%20the%20Beach.7z","format":"7z"},{"name":"Maniac Mansion","file":"Maniac Mansion.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Maniac%20Mansion.7z","format":"7z"},{"name":"River City Ransom","file":"River City Ransom.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/River%20City%20Ransom.7z","format":"7z"},{"name":"The Simpsons: Bart Vs. the World","file":"Simpsons, The - Bart Vs. the World.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Simpsons%2C%20The%20-%20Bart%20Vs.%20the%20World.7z","format":"7z"},{"name":"Teenage Mutant Ninja Turtles III","file":"Teenage Mutant Ninja Turtles III - The Manhattan Project.7z","url":"https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Teenage%20Mutant%20Ninja%20Turtles%20III%20-%20The%20Manhattan%20Project.7z","format":"7z"}]}};
+
+        let selectedFile = null;
+        let selectedSystem = '';
+        let gameUrl = null;
+        let romManifest = ROM_MANIFEST;
+        let currentPage = 'upload';
+
+        const pagesContainer = document.getElementById('pages-container');
+        const navArrow = document.getElementById('nav-arrow');
+        const navArrowBack = document.getElementById('nav-arrow-back');
+        const systemSelect = document.getElementById('system-select');
+        const romUpload = document.getElementById('rom-upload');
+        const startBtn = document.getElementById('start-btn');
+        const gameContainer = document.getElementById('game-container');
+        const fileLabel = document.getElementById('file-label');
+        const fileName = document.getElementById('file-name');
+        const statusMessage = document.getElementById('status-message');
+        const statusMessageLibrary = document.getElementById('status-message-library');
+        const romLibrary = document.getElementById('rom-library');
+        const searchInput = document.getElementById('search-input');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        navArrow.addEventListener('click', function() {
+            pagesContainer.classList.add('show-library');
+            currentPage = 'library';
+            if (romLibrary.children.length === 0) {
+                renderRomLibrary();
+            }
+        });
+
+        navArrowBack.addEventListener('click', function() {
+            pagesContainer.classList.remove('show-library');
+            currentPage = 'upload';
+        });
+
+        systemSelect.addEventListener('change', function() {
+            selectedSystem = this.value;
+            updateStartButton();
+        });
+
+        romUpload.addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.name.endsWith('.7z') || file.name.endsWith('.zip')) {
+                    await handleCompressedFile(file);
+                } else {
+                    selectedFile = file;
+                    fileName.textContent = `Selected: ${file.name}`;
+                    fileLabel.textContent = `✅ ${file.name}`;
+                    updateStartButton();
+                }
+            }
+        });
+
+        async function handleCompressedFile(file) {
+            showStatus('Extracting compressed file...', false);
+            try {
+                if (file.name.endsWith('.zip')) {
+                    const zip = new JSZip();
+                    const zipData = await zip.loadAsync(file);
+                    const romFiles = Object.keys(zipData.files).filter(filename => 
+                        !filename.endsWith('/') && 
+                        (filename.endsWith('.smc') || filename.endsWith('.sfc') || 
+                         filename.endsWith('.gba') || filename.endsWith('.z64') || 
+                         filename.endsWith('.n64') || filename.endsWith('.gen') || 
+                         filename.endsWith('.md') || filename.endsWith('.bin') ||
+                         filename.endsWith('.nes'))
+                    );
+                    if (romFiles.length === 0) {
+                        throw new Error('No ROM file found in ZIP');
+                    }
+                    const romFile = zipData.files[romFiles[0]];
+                    const romBlob = await romFile.async('blob');
+                    selectedFile = new File([romBlob], romFiles[0]);
+                } else if (file.name.endsWith('.7z')) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    Archive.init();
+                    const archive = await Archive.open(new Uint8Array(arrayBuffer));
+                    const entries = await archive.getFilesArray();
+                    
+                    let romData = null;
+                    let romName = '';
+                    
+                    for (const entry of entries) {
+                        if (entry.file.name.endsWith('.smc') || entry.file.name.endsWith('.sfc') || 
+                            entry.file.name.endsWith('.gba') || entry.file.name.endsWith('.z64') || 
+                            entry.file.name.endsWith('.n64') || entry.file.name.endsWith('.gen') || 
+                            entry.file.name.endsWith('.md') || entry.file.name.endsWith('.bin') ||
+                            entry.file.name.endsWith('.nes')) {
+                            const extractedData = await entry.file.extract();
+                            romData = new Blob([extractedData]);
+                            romName = entry.file.name;
+                            break;
+                        }
+                    }
+                    
+                    if (!romData) {
+                        throw new Error('No ROM file found in 7z archive');
+                    }
+                    
+                    selectedFile = new File([romData], romName);
+                }
+                
+                fileName.textContent = `Selected: ${selectedFile.name}`;
+                fileLabel.textContent = `✅ ${selectedFile.name}`;
+                updateStartButton();
+                showStatus('File extracted successfully!', false);
+            } catch (error) {
+                console.error('Error extracting file:', error);
+                showStatus('Error extracting file: ' + error.message, true);
+            }
+        }
+
+        fileLabel.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.borderColor = '#fff';
+            this.style.background = 'linear-gradient(135deg, #5B7FE8 0%, #6B8FF5 100%)';
+            this.style.transform = 'translateY(-3px)';
+        });
+
+        fileLabel.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            this.style.background = 'linear-gradient(135deg, #4169E1 0%, #5B7FE8 100%)';
+            this.style.transform = 'translateY(0)';
+        });
+
+        fileLabel.addEventListener('drop', async function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            this.style.background = 'linear-gradient(135deg, #4169E1 0%, #5B7FE8 100%)';
+            this.style.transform = 'translateY(0)';
+            
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                romUpload.files = e.dataTransfer.files;
+                if (file.name.endsWith('.7z') || file.name.endsWith('.zip')) {
+                    await handleCompressedFile(file);
+                } else {
+                    selectedFile = file;
+                    fileName.textContent = `Selected: ${file.name}`;
+                    fileLabel.textContent = `✅ ${file.name}`;
+                    updateStartButton();
+                }
+            }
+        });
+
+        function updateStartButton() {
+            if (selectedSystem && selectedFile) {
+                startBtn.disabled = false;
+            } else {
+                startBtn.disabled = true;
+            }
+        }
+
+        function showStatus(message, isError = false, library = false) {
+            const statusEl = library ? statusMessageLibrary : statusMessage;
+            statusEl.textContent = message;
+            statusEl.className = 'status-message ' + (isError ? 'status-error' : 'status-success');
+            statusEl.style.display = 'block';
+            
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 5000);
+        }
+
+        startBtn.addEventListener('click', function() {
+            if (!selectedFile || !selectedSystem) {
+                showStatus('Please select both a system and a ROM file!', true);
+                return;
+            }
+
+            showStatus('Loading emulator...', false);
+            startBtn.disabled = true;
+            startBtn.textContent = 'Loading...';
+
+            gameUrl = URL.createObjectURL(selectedFile);
+            
+            gameContainer.style.display = 'block';
+            
+            setTimeout(() => {
+                loadEmulator();
+            }, 100);
+        });
+
+        function loadEmulator() {
+            try {
+                window.EJS_player = '#game';
+                window.EJS_core = selectedSystem;
+                window.EJS_gameUrl = gameUrl;
+                window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
+                window.EJS_startOnLoaded = true;
+                
+                window.EJS_biosUrl = '';
+                window.EJS_gameID = selectedFile ? selectedFile.name : 'rom';
+                
+                window.EJS_color = '#4169E1';
+                window.EJS_backgroundColor = '#0a0a0a';
+                
+                window.EJS_VirtualGamepadSettings = {
+                    enabled: true
+                };
+
+                const existingScript = document.querySelector('script[src*="emulatorjs"]');
+                if (existingScript) {
+                    existingScript.remove();
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+                script.onload = function() {
+                    showStatus('Emulator loaded! Game starting...', false);
+                    startBtn.textContent = 'Game Running';
+                    
+                    setTimeout(() => {
+                        document.querySelector('.setup-panel').style.display = 'none';
+                    }, 2000);
+                };
+                script.onerror = function() {
+                    showStatus('Failed to load emulator. Please check your internet connection.', true);
+                    startBtn.disabled = false;
+                    startBtn.textContent = 'Start Game';
+                };
+                
+                document.body.appendChild(script);
+
+            } catch (error) {
+                console.error('Error loading emulator:', error);
+                showStatus('Error: ' + error.message, true);
+                startBtn.disabled = false;
+                startBtn.textContent = 'Start Game';
+            }
+        }
+
+        function renderRomLibrary(searchTerm = '') {
+            romLibrary.innerHTML = '';
+            
+            for (const [consoleKey, consoleData] of Object.entries(romManifest)) {
+                const filteredRoms = consoleData.roms.filter(rom => 
+                    rom.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                if (filteredRoms.length === 0) continue;
+
+                const consoleGroup = document.createElement('div');
+                consoleGroup.className = 'console-group';
+
+                const consoleHeader = document.createElement('div');
+                consoleHeader.className = 'console-header';
+                consoleHeader.innerHTML = `
+                    <h3>${consoleData.name}</h3>
+                    <span class="console-arrow">▶</span>
+                `;
+
+                const romList = document.createElement('div');
+                romList.className = 'rom-list';
+
+                filteredRoms.forEach(rom => {
+                    const romItem = document.createElement('div');
+                    romItem.className = 'rom-item';
+                    romItem.innerHTML = `
+                        <span class="rom-name">${rom.name}</span>
+                        <span class="rom-format ${rom.format}">${rom.format}</span>
+                    `;
+                    romItem.addEventListener('click', () => handleRomClick(rom, consoleData.code));
+                    romList.appendChild(romItem);
+                });
+
+                consoleHeader.addEventListener('click', () => {
+                    const arrow = consoleHeader.querySelector('.console-arrow');
+                    arrow.classList.toggle('expanded');
+                    romList.classList.toggle('expanded');
+                });
+
+                consoleGroup.appendChild(consoleHeader);
+                consoleGroup.appendChild(romList);
+                romLibrary.appendChild(consoleGroup);
+            }
+
+            if (romLibrary.children.length === 0) {
+                romLibrary.innerHTML = '<p style="text-align: center; padding: 40px; color: rgba(255,255,255,0.7);">No ROMs found</p>';
+            }
+        }
+
+        searchInput.addEventListener('input', function() {
+            renderRomLibrary(this.value);
+        });
+
+        async function handleRomClick(rom, consoleCode) {
+            showStatus('Downloading ROM...', false, true);
+
+            try {
+                const response = await fetch(rom.url);
+                if (!response.ok) throw new Error('Download failed');
+
+                const blob = await response.blob();
+
+                if (rom.format === 'zip') {
+                    showStatus('Extracting ZIP file...', false, true);
+                    const zip = new JSZip();
+                    const zipData = await zip.loadAsync(blob);
+                    
+                    const romFiles = Object.keys(zipData.files).filter(filename => 
+                        !filename.endsWith('/') && 
+                        (filename.endsWith('.smc') || filename.endsWith('.sfc') || 
+                         filename.endsWith('.gba') || filename.endsWith('.z64') || 
+                         filename.endsWith('.n64') || filename.endsWith('.gen') || 
+                         filename.endsWith('.md') || filename.endsWith('.bin') ||
+                         filename.endsWith('.nes'))
+                    );
+
+                    if (romFiles.length === 0) {
+                        throw new Error('No ROM file found in ZIP');
+                    }
+
+                    const romFile = zipData.files[romFiles[0]];
+                    const romBlob = await romFile.async('blob');
+                    selectedFile = new File([romBlob], romFiles[0]);
+                } else if (rom.format === '7z') {
+                    showStatus('Extracting 7z file...', false, true);
+                    const arrayBuffer = await blob.arrayBuffer();
+                    Archive.init();
+                    const archive = await Archive.open(new Uint8Array(arrayBuffer));
+                    const entries = await archive.getFilesArray();
+                    
+                    let romData = null;
+                    let romName = '';
+                    
+                    for (const entry of entries) {
+                        if (entry.file.name.endsWith('.smc') || entry.file.name.endsWith('.sfc') || 
+                            entry.file.name.endsWith('.gba') || entry.file.name.endsWith('.z64') || 
+                            entry.file.name.endsWith('.n64') || entry.file.name.endsWith('.gen') || 
+                            entry.file.name.endsWith('.md') || entry.file.name.endsWith('.bin') ||
+                            entry.file.name.endsWith('.nes')) {
+                            const extractedData = await entry.file.extract();
+                            romData = new Blob([extractedData]);
+                            romName = entry.file.name;
+                            break;
+                        }
+                    }
+                    
+                    if (!romData) {
+                        throw new Error('No ROM file found in 7z archive');
+                    }
+                    
+                    selectedFile = new File([romData], romName);
+                } else if (rom.format === 'z64') {
+                    selectedFile = new File([blob], rom.file);
+                } else {
+                    throw new Error('Unsupported format');
+                }
+
+                selectedSystem = consoleCode;
+                systemSelect.value = consoleCode;
+
+                showStatus('ROM loaded! Starting game...', false, true);
+
+                setTimeout(() => {
+                    pagesContainer.classList.remove('show-library');
+                    currentPage = 'upload';
+                    
+                    setTimeout(() => {
+                        gameUrl = URL.createObjectURL(selectedFile);
+                        gameContainer.style.display = 'block';
+                        loadEmulator();
+                    }, 300);
+                }, 1000);
+
+            } catch (error) {
+                console.error('Error handling ROM:', error);
+                showStatus('Error: ' + error.message, true, true);
+            }
+        }
+
+        console.log('EmulatorJS with ROM Library Ready!');
+        console.log('JSZip loaded:', typeof JSZip !== 'undefined');
+        console.log('7z library loaded:', typeof Archive !== 'undefined');
+    </script>
+</body>
+</html>
