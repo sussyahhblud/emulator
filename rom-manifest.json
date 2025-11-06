@@ -1,0 +1,82 @@
+{
+  "snes": {
+    "name": "Super Nintendo (SNES)",
+    "code": "snes",
+    "roms": [
+      {"name": "Captain America and the Avengers", "file": "Captain America and the Avengers (Europe).7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Captain%20America%20and%20the%20Avengers%20(Europe).7z", "format": "7z"},
+      {"name": "Captain Commando", "file": "Captain Commando (U).7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Captain%20Commando%20(U).7z", "format": "7z"},
+      {"name": "Chrono Trigger", "file": "Chrono Trigger (USA).7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Chrono%20Trigger%20(USA).7z", "format": "7z"},
+      {"name": "Clock Tower", "file": "Clock Tower.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Clock%20Tower.7z", "format": "7z"},
+      {"name": "Donkey Kong Country", "file": "Donkey Kong Country (USA) (Rev 2).7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Donkey%20Kong%20Country%20(USA)%20(Rev%202).7z", "format": "7z"},
+      {"name": "Dragon Ball Z - Hyper Dimension", "file": "Dragon Ball Z - Hyper Dimension.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Dragon%20Ball%20Z%20-%20Hyper%20Dimension.7z", "format": "7z"},
+      {"name": "Earthbound", "file": "Earthbound.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Earthbound.7z", "format": "7z"},
+      {"name": "Final Fantasy III", "file": "Final Fantasy III (USA) (Rev 1).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fantasy%20III%20(USA)%20(Rev%201).zip", "format": "zip"},
+      {"name": "Final Fight", "file": "Final Fight.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fight.7z", "format": "7z"},
+      {"name": "Final Fight 2", "file": "Final Fight 2.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fight%202.7z", "format": "7z"},
+      {"name": "Final Fight 3", "file": "Final Fight 3.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/snes-roms/master/Final%20Fight%203.7z", "format": "7z"}
+    ]
+  },
+  "n64": {
+    "name": "Nintendo 64",
+    "code": "n64",
+    "roms": [
+      {"name": "Banjo-Kazooie", "file": "Banjo-Kazooie.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Banjo-Kazooie.7z", "format": "7z"},
+      {"name": "Cruis'n World", "file": "Cruis'n World.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Cruis'n%20World.7z", "format": "7z"},
+      {"name": "Paper Mario", "file": "Paper Mario.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Paper%20Mario.7z", "format": "7z"},
+      {"name": "Quake 64", "file": "Quake 64.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Quake%2064.7z", "format": "7z"},
+      {"name": "Quake II", "file": "Quake II.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Quake%20II.7z", "format": "7z"},
+      {"name": "Super Mario 64 (ES)", "file": "Super Mario 64.es.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Super%20Mario%2064.es.7z", "format": "7z"},
+      {"name": "Zelda: Majora's Mask", "file": "The Legend of Zelda - Majora's Mask.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/The%20Legend%20of%20Zelda%20-%20Majora's%20Mask.7z", "format": "7z"},
+      {"name": "Zelda: Ocarina of Time (Master Quest)", "file": "The Legend of Zelda - Ocarina of Time - Master Quest (E) [!].z64", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/The%20Legend%20of%20Zelda%20-%20Ocarina%20of%20Time%20-%20Master%20Quest%20(E)%20%5B!%5D.z64", "format": "z64"},
+      {"name": "Zelda: Ocarina of Time (ES)", "file": "The Legend of Zelda - Ocarina of Time.es.z64", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/The%20Legend%20of%20Zelda%20-%20Ocarina%20of%20Time.es.z64", "format": "z64"},
+      {"name": "Turok: Dinosaur Hunter", "file": "Turok - Dinosaur Hunter.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/Turok%20-%20Dinosaur%20Hunter.7z", "format": "7z"},
+      {"name": "WinBack: Covert Operations", "file": "WinBack - Covert Operations.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/n64-roms/master/WinBack%20-%20Covert%20Operations.7z", "format": "7z"}
+    ]
+  },
+  "gba": {
+    "name": "Game Boy Advance",
+    "code": "gba",
+    "roms": [
+      {"name": "Dragon Ball: Advanced Adventure", "file": "Dragon Ball - Advanced Adventure (Europe) (En,Fr,De,Es,It).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20-%20Advanced%20Adventure%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip", "format": "zip"},
+      {"name": "Dragon Ball Z: Buu's Fury", "file": "Dragon Ball Z - Buu's Fury (USA).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20Z%20-%20Buu's%20Fury%20(USA).zip", "format": "zip"},
+      {"name": "Dragon Ball Z: Legacy of Goku", "file": "Dragon Ball Z - The Legacy of Goku (Europe) (En,Fr,De,Es,It).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20Z%20-%20The%20Legacy%20of%20Goku%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip", "format": "zip"},
+      {"name": "Dragon Ball Z: Legacy of Goku II", "file": "Dragon Ball Z - The Legacy of Goku II (Europe) (En,Fr,De,Es,It).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Dragon%20Ball%20Z%20-%20The%20Legacy%20of%20Goku%20II%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip", "format": "zip"},
+      {"name": "Final Fantasy VI Advance (ES)", "file": "Final Fantasy VI Advance.es.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Final%20Fantasy%20VI%20Advance.es.7z", "format": "7z"},
+      {"name": "Golden Sun", "file": "Golden Sun (USA, Europe).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Golden%20Sun%20(USA%2C%20Europe).zip", "format": "zip"},
+      {"name": "Kingdom Hearts: Chain of Memories", "file": "Kingdom Hearts - Chain of Memories (USA).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Kingdom%20Hearts%20-%20Chain%20of%20Memories%20(USA).zip", "format": "zip"},
+      {"name": "Zelda: A Link to the Past & Four Swords", "file": "Legend of Zelda, The - A Link to the Past & Four Swords (Europe) (En,Fr,De,Es,It).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Legend%20of%20Zelda%2C%20The%20-%20A%20Link%20to%20the%20Past%20%26%20Four%20Swords%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).zip", "format": "zip"},
+      {"name": "Pokemon Emerald", "file": "Pokemon - Emerald Version (USA, Europe).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Pokemon%20-%20Emerald%20Version%20(USA%2C%20Europe).zip", "format": "zip"},
+      {"name": "Pokemon Esmeralda (ES)", "file": "Pokemon - Edicion Esmeralda (Spain).zip", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/gba-roms/master/Pokemon%20-%20Edicion%20Esmeralda%20(Spain).zip", "format": "zip"}
+    ]
+  },
+  "segaMD": {
+    "name": "Sega Genesis / Mega Drive",
+    "code": "segaMD",
+    "roms": [
+      {"name": "Comix Zone", "file": "Comix Zone.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Comix%20Zone.7z", "format": "7z"},
+      {"name": "ECCO the Dolphin", "file": "ECCO.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/ECCO.7z", "format": "7z"},
+      {"name": "FIFA Soccer 98", "file": "FIFA Soccer 98 - Road to the World Cup.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/FIFA%20Soccer%2098%20-%20Road%20to%20the%20World%20Cup.7z", "format": "7z"},
+      {"name": "Jurassic Park: Rampage Edition", "file": "Jurassic Park - Rampage Edition.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Jurassic%20Park%20-%20Rampage%20Edition.7z", "format": "7z"},
+      {"name": "Michael Jackson's Moonwalker", "file": "Michael Jackson's Moonwalker.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Michael%20Jackson's%20Moonwalker.7z", "format": "7z"},
+      {"name": "Phantasy Star IV", "file": "Phantasy Star - The End of the Millenium.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Phantasy%20Star%20-%20The%20End%20of%20the%20Millenium.7z", "format": "7z"},
+      {"name": "Pirates! Gold", "file": "Pirates! Gold.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Pirates!%20Gold.7z", "format": "7z"},
+      {"name": "River City Ransom", "file": "River City Ransom.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/River%20City%20Ransom.7z", "format": "7z"},
+      {"name": "Sensible Soccer", "file": "Sensible Soccer - International Edition.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Sensible%20Soccer%20-%20International%20Edition.7z", "format": "7z"},
+      {"name": "Shadowrun", "file": "Shadowrun (USA).7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Shadowrun%20(USA).7z", "format": "7z"},
+      {"name": "Streets of Rage", "file": "Streets of Rage.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Streets%20of%20Rage.7z", "format": "7z"},
+      {"name": "Streets of Rage 2", "file": "Streets of Rage 2.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Streets%20of%20Rage%202.7z", "format": "7z"},
+      {"name": "Streets of Rage 3", "file": "Streets of Rage 3.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/genesis-roms/master/Streets%20of%20Rage%203.7z", "format": "7z"}
+    ]
+  },
+  "nes": {
+    "name": "Nintendo Entertainment System (NES)",
+    "code": "nes",
+    "roms": [
+      {"name": "Kings of the Beach", "file": "Kings of the Beach.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Kings%20of%20the%20Beach.7z", "format": "7z"},
+      {"name": "Maniac Mansion", "file": "Maniac Mansion.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Maniac%20Mansion.7z", "format": "7z"},
+      {"name": "River City Ransom", "file": "River City Ransom.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/River%20City%20Ransom.7z", "format": "7z"},
+      {"name": "The Simpsons: Bart Vs. the World", "file": "Simpsons, The - Bart Vs. the World.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Simpsons%2C%20The%20-%20Bart%20Vs.%20the%20World.7z", "format": "7z"},
+      {"name": "Teenage Mutant Ninja Turtles III", "file": "Teenage Mutant Ninja Turtles III - The Manhattan Project.7z", "url": "https://raw.githubusercontent.com/dolchi21-retroarch/nes-roms/master/Teenage%20Mutant%20Ninja%20Turtles%20III%20-%20The%20Manhattan%20Project.7z", "format": "7z"}
+    ]
+  }
+}

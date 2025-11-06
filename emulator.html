@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmulatorJS - Retro Gaming Emulator</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sussyahhblud/emulator/main/logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -22,6 +23,7 @@
             padding: 20px;
             color: #fff;
             animation: fadeIn 0.8s ease-in;
+            overflow-x: hidden;
         }
 
         @keyframes fadeIn {
@@ -34,9 +36,31 @@
             50% { box-shadow: 0 0 30px rgba(65, 105, 225, 0.8), 0 0 60px rgba(65, 105, 225, 0.5); }
         }
 
-        .container {
+        .page-slider {
             width: 100%;
             max-width: 1200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pages-container {
+            display: flex;
+            width: 200%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pages-container.show-library {
+            transform: translateX(-50%);
+        }
+
+        .page {
+            width: 50%;
+            flex-shrink: 0;
+            padding: 0 10px;
+        }
+
+        .container {
+            width: 100%;
             background: linear-gradient(145deg, #1e3a8a, #1a3278);
             backdrop-filter: blur(10px);
             border-radius: 24px;
@@ -56,6 +80,33 @@
             margin-bottom: 40px;
             padding-bottom: 20px;
             border-bottom: 2px solid rgba(65, 105, 225, 0.3);
+            position: relative;
+        }
+
+        .header-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-arrow {
+            background: linear-gradient(135deg, #4169E1 0%, #5B7FE8 100%);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.4);
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(65, 105, 225, 0.6);
         }
 
         h1 {
@@ -65,7 +116,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
             letter-spacing: 2px;
             text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
             animation: textGlow 3s ease-in-out infinite;
@@ -81,6 +131,7 @@
             color: rgba(255, 255, 255, 0.85);
             font-weight: 300;
             letter-spacing: 1px;
+            margin-top: 15px;
         }
 
         .setup-panel {
@@ -116,7 +167,7 @@
             gap: 8px;
         }
 
-        select, input[type="file"] {
+        select, input[type="file"], input[type="text"] {
             width: 100%;
             padding: 16px;
             border-radius: 12px;
@@ -129,13 +180,13 @@
             font-weight: 500;
         }
 
-        select:hover, input[type="file"]:hover {
+        select:hover, input[type="file"]:hover, input[type="text"]:hover {
             background: rgba(0, 0, 0, 0.5);
             border-color: rgba(65, 105, 225, 0.6);
             box-shadow: 0 4px 15px rgba(65, 105, 225, 0.2);
         }
 
-        select:focus {
+        select:focus, input[type="text"]:focus {
             outline: none;
             border-color: #4169E1;
             box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.2);
@@ -370,6 +421,129 @@
             box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
         }
 
+        .search-bar {
+            margin-bottom: 25px;
+        }
+
+        .search-bar input {
+            cursor: text;
+        }
+
+        .console-group {
+            margin-bottom: 20px;
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.4), rgba(26, 50, 120, 0.2));
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(65, 105, 225, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .console-group:hover {
+            border-color: rgba(65, 105, 225, 0.4);
+        }
+
+        .console-header {
+            padding: 20px 25px;
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.3), rgba(65, 105, 225, 0.2));
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .console-header:hover {
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.4), rgba(65, 105, 225, 0.3));
+        }
+
+        .console-header h3 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .console-arrow {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .console-arrow.expanded {
+            transform: rotate(90deg);
+        }
+
+        .rom-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .rom-list.expanded {
+            max-height: 2000px;
+        }
+
+        .rom-item {
+            padding: 18px 25px;
+            border-bottom: 1px solid rgba(65, 105, 225, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .rom-item:last-child {
+            border-bottom: none;
+        }
+
+        .rom-item:hover {
+            background: rgba(65, 105, 225, 0.2);
+            padding-left: 35px;
+        }
+
+        .rom-name {
+            font-weight: 600;
+            font-size: 1.05em;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .rom-format {
+            background: rgba(65, 105, 225, 0.4);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .rom-format.zip {
+            background: rgba(76, 175, 80, 0.4);
+        }
+
+        .rom-format.z64 {
+            background: rgba(33, 150, 243, 0.4);
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(65, 105, 225, 0.2);
+            border-top: 4px solid #4169E1;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2em;
@@ -386,84 +560,128 @@
             .btn {
                 font-size: 1em;
             }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .header-content {
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>EmulatorJS</h1>
-            <p class="subtitle">Play Your Favorite Retro Games in the Browser</p>
-        </div>
+    <div class="page-slider">
+        <div class="pages-container" id="pages-container">
+            <div class="page">
+                <div class="container">
+                    <div class="header">
+                        <div class="header-content">
+                            <h1>EmulatorJS</h1>
+                            <button class="nav-arrow" id="nav-arrow" title="ROM Library">➜</button>
+                        </div>
+                        <p class="subtitle">Play Your Favorite Retro Games in the Browser</p>
+                    </div>
 
-        <div class="info-box">
-            <h3>📋 Quick Start Guide</h3>
-            <ul>
-                <li>Select your gaming system from the dropdown below</li>
-                <li>Upload a ROM file for that system</li>
-                <li>Click "Start Game" to begin playing</li>
-                <li>Use keyboard or gamepad to control the game</li>
-            </ul>
-        </div>
+                    <div class="info-box">
+                        <h3>📋 Quick Start Guide</h3>
+                        <ul>
+                            <li>Select your gaming system from the dropdown below</li>
+                            <li>Upload a ROM file for that system</li>
+                            <li>Click "Start Game" to begin playing</li>
+                            <li>Use keyboard or gamepad to control the game</li>
+                        </ul>
+                    </div>
 
-        <div class="setup-panel">
-            <div class="form-group">
-                <label for="system-select">Select Gaming System:</label>
-                <select id="system-select">
-                    <option value="">-- Choose a System --</option>
-                    <option value="nes">Nintendo Entertainment System (NES)</option>
-                    <option value="snes">Super Nintendo (SNES)</option>
-                    <option value="gb">Game Boy</option>
-                    <option value="gba">Game Boy Advance</option>
-                    <option value="gbc">Game Boy Color</option>
-                    <option value="n64">Nintendo 64</option>
-                    <option value="nds">Nintendo DS</option>
-                    <option value="segaMD">Sega Genesis / Mega Drive</option>
-                    <option value="segaMS">Sega Master System</option>
-                    <option value="segaGG">Sega Game Gear</option>
-                    <option value="segaSaturn">Sega Saturn</option>
-                    <option value="segaCD">Sega CD</option>
-                    <option value="sega32x">Sega 32X</option>
-                    <option value="atari2600">Atari 2600</option>
-                    <option value="atari7800">Atari 7800</option>
-                    <option value="lynx">Atari Lynx</option>
-                    <option value="jaguar">Atari Jaguar</option>
-                    <option value="psx">PlayStation 1</option>
-                    <option value="vb">Virtual Boy</option>
-                    <option value="ngp">Neo Geo Pocket</option>
-                    <option value="ngc">Neo Geo Pocket Color</option>
-                    <option value="ws">WonderSwan</option>
-                    <option value="wsc">WonderSwan Color</option>
-                    <option value="pce">PC Engine / TurboGrafx-16</option>
-                    <option value="arcade">Arcade (MAME)</option>
-                </select>
-            </div>
+                    <div class="setup-panel">
+                        <div class="form-group">
+                            <label for="system-select">Select Gaming System:</label>
+                            <select id="system-select">
+                                <option value="">-- Choose a System --</option>
+                                <option value="nes">Nintendo Entertainment System (NES)</option>
+                                <option value="snes">Super Nintendo (SNES)</option>
+                                <option value="gb">Game Boy</option>
+                                <option value="gba">Game Boy Advance</option>
+                                <option value="gbc">Game Boy Color</option>
+                                <option value="n64">Nintendo 64</option>
+                                <option value="nds">Nintendo DS</option>
+                                <option value="segaMD">Sega Genesis / Mega Drive</option>
+                                <option value="segaMS">Sega Master System</option>
+                                <option value="segaGG">Sega Game Gear</option>
+                                <option value="segaSaturn">Sega Saturn</option>
+                                <option value="segaCD">Sega CD</option>
+                                <option value="sega32x">Sega 32X</option>
+                                <option value="atari2600">Atari 2600</option>
+                                <option value="atari7800">Atari 7800</option>
+                                <option value="lynx">Atari Lynx</option>
+                                <option value="jaguar">Atari Jaguar</option>
+                                <option value="psx">PlayStation 1</option>
+                                <option value="vb">Virtual Boy</option>
+                                <option value="ngp">Neo Geo Pocket</option>
+                                <option value="ngc">Neo Geo Pocket Color</option>
+                                <option value="ws">WonderSwan</option>
+                                <option value="wsc">WonderSwan Color</option>
+                                <option value="pce">PC Engine / TurboGrafx-16</option>
+                                <option value="arcade">Arcade (MAME)</option>
+                            </select>
+                        </div>
 
-            <div class="form-group">
-                <label for="rom-upload">Upload ROM File:</label>
-                <div class="file-upload-wrapper">
-                    <label for="rom-upload" class="file-upload-label" id="file-label">
-                        📁 Click to Select ROM File or Drag & Drop
-                    </label>
-                    <input type="file" id="rom-upload" accept=".nes,.smc,.sfc,.gb,.gba,.gbc,.z64,.n64,.v64,.nds,.bin,.gen,.md,.sms,.gg,.iso,.cue,.a26,.a78,.lnx,.jag,.cue,.ngp,.ngc,.ws,.wsc,.pce,.zip">
+                        <div class="form-group">
+                            <label for="rom-upload">Upload ROM File:</label>
+                            <div class="file-upload-wrapper">
+                                <label for="rom-upload" class="file-upload-label" id="file-label">
+                                    📁 Click to Select ROM File or Drag & Drop
+                                </label>
+                                <input type="file" id="rom-upload" accept=".nes,.smc,.sfc,.gb,.gba,.gbc,.z64,.n64,.v64,.nds,.bin,.gen,.md,.sms,.gg,.iso,.cue,.a26,.a78,.lnx,.jag,.cue,.ngp,.ngc,.ws,.wsc,.pce,.zip">
+                            </div>
+                            <p id="file-name" style="margin-top: 10px; font-style: italic;"></p>
+                        </div>
+
+                        <button class="btn btn-primary" id="start-btn" disabled>Start Game</button>
+                        
+                        <div id="status-message" class="status-message"></div>
+                    </div>
+
+                    <div class="controls-info">
+                        <h4>🎮 Controls:</h4>
+                        <p><strong>Keyboard:</strong> Arrow Keys = D-Pad | Z/X = A/B | Enter = Start | Shift = Select</p>
+                        <p><strong>Save/Load:</strong> Press Shift+F2 to save state | Shift+F4 to load state</p>
+                        <p><strong>Gamepad:</strong> Connect a gamepad for native controller support</p>
+                    </div>
+
+                    <div id="game-container">
+                        <div id="game"></div>
+                    </div>
                 </div>
-                <p id="file-name" style="margin-top: 10px; font-style: italic;"></p>
             </div>
 
-            <button class="btn btn-primary" id="start-btn" disabled>Start Game</button>
-            
-            <div id="status-message" class="status-message"></div>
-        </div>
+            <div class="page">
+                <div class="container">
+                    <div class="header">
+                        <div class="header-content">
+                            <button class="nav-arrow" id="nav-arrow-back" title="Upload ROM">⬅</button>
+                            <h1>ROM Library</h1>
+                        </div>
+                        <p class="subtitle">Browse and Play Pre-loaded ROMs</p>
+                    </div>
 
-        <div class="controls-info">
-            <h4>🎮 Controls:</h4>
-            <p><strong>Keyboard:</strong> Arrow Keys = D-Pad | Z/X = A/B | Enter = Start | Shift = Select</p>
-            <p><strong>Save/Load:</strong> Press Shift+F2 to save state | Shift+F4 to load state</p>
-            <p><strong>Gamepad:</strong> Connect a gamepad for native controller support</p>
-        </div>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="🔍 Search ROMs...">
+                    </div>
 
-        <div id="game-container">
-            <div id="game"></div>
+                    <div class="loading-spinner" id="loading-spinner">
+                        <div class="spinner"></div>
+                        <p style="margin-top: 15px;">Loading ROM library...</p>
+                    </div>
+
+                    <div id="rom-library"></div>
+
+                    <div id="status-message-library" class="status-message"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -471,7 +689,12 @@
         let selectedFile = null;
         let selectedSystem = '';
         let gameUrl = null;
+        let romManifest = null;
+        let currentPage = 'upload';
 
+        const pagesContainer = document.getElementById('pages-container');
+        const navArrow = document.getElementById('nav-arrow');
+        const navArrowBack = document.getElementById('nav-arrow-back');
         const systemSelect = document.getElementById('system-select');
         const romUpload = document.getElementById('rom-upload');
         const startBtn = document.getElementById('start-btn');
@@ -479,6 +702,23 @@
         const fileLabel = document.getElementById('file-label');
         const fileName = document.getElementById('file-name');
         const statusMessage = document.getElementById('status-message');
+        const statusMessageLibrary = document.getElementById('status-message-library');
+        const romLibrary = document.getElementById('rom-library');
+        const searchInput = document.getElementById('search-input');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        navArrow.addEventListener('click', function() {
+            pagesContainer.classList.add('show-library');
+            currentPage = 'library';
+            if (!romManifest) {
+                loadRomManifest();
+            }
+        });
+
+        navArrowBack.addEventListener('click', function() {
+            pagesContainer.classList.remove('show-library');
+            currentPage = 'upload';
+        });
 
         systemSelect.addEventListener('change', function() {
             selectedSystem = this.value;
@@ -536,13 +776,14 @@
             }
         }
 
-        function showStatus(message, isError = false) {
-            statusMessage.textContent = message;
-            statusMessage.className = 'status-message ' + (isError ? 'status-error' : 'status-success');
-            statusMessage.style.display = 'block';
+        function showStatus(message, isError = false, library = false) {
+            const statusEl = library ? statusMessageLibrary : statusMessage;
+            statusEl.textContent = message;
+            statusEl.className = 'status-message ' + (isError ? 'status-error' : 'status-success');
+            statusEl.style.display = 'block';
             
             setTimeout(() => {
-                statusMessage.style.display = 'none';
+                statusEl.style.display = 'none';
             }, 5000);
         }
 
@@ -574,7 +815,7 @@
                 window.EJS_startOnLoaded = true;
                 
                 window.EJS_biosUrl = '';
-                window.EJS_gameID = selectedFile.name;
+                window.EJS_gameID = selectedFile ? selectedFile.name : 'rom';
                 
                 window.EJS_color = '#4169E1';
                 window.EJS_backgroundColor = '#0a0a0a';
@@ -582,6 +823,11 @@
                 window.EJS_VirtualGamepadSettings = {
                     enabled: true
                 };
+
+                const existingScript = document.querySelector('script[src*="emulatorjs"]');
+                if (existingScript) {
+                    existingScript.remove();
+                }
 
                 const script = document.createElement('script');
                 script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
@@ -609,8 +855,144 @@
             }
         }
 
-        console.log('EmulatorJS Single-File Emulator Ready!');
-        console.log('Supported systems: NES, SNES, GB, GBA, N64, PlayStation, Sega Genesis, and more!');
+        async function loadRomManifest() {
+            loadingSpinner.style.display = 'block';
+            try {
+                const response = await fetch('./rom-manifest.json');
+                romManifest = await response.json();
+                renderRomLibrary();
+            } catch (error) {
+                console.error('Error loading ROM manifest:', error);
+                showStatus('Failed to load ROM library', true, true);
+                romLibrary.innerHTML = '<p style="text-align: center; padding: 40px; color: rgba(255,255,255,0.7);">Failed to load ROM library</p>';
+            } finally {
+                loadingSpinner.style.display = 'none';
+            }
+        }
+
+        function renderRomLibrary(searchTerm = '') {
+            romLibrary.innerHTML = '';
+            
+            for (const [consoleKey, consoleData] of Object.entries(romManifest)) {
+                const filteredRoms = consoleData.roms.filter(rom => 
+                    rom.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                if (filteredRoms.length === 0) continue;
+
+                const consoleGroup = document.createElement('div');
+                consoleGroup.className = 'console-group';
+
+                const consoleHeader = document.createElement('div');
+                consoleHeader.className = 'console-header';
+                consoleHeader.innerHTML = `
+                    <h3>${consoleData.name}</h3>
+                    <span class="console-arrow">▶</span>
+                `;
+
+                const romList = document.createElement('div');
+                romList.className = 'rom-list';
+
+                filteredRoms.forEach(rom => {
+                    const romItem = document.createElement('div');
+                    romItem.className = 'rom-item';
+                    romItem.innerHTML = `
+                        <span class="rom-name">${rom.name}</span>
+                        <span class="rom-format ${rom.format}">${rom.format}</span>
+                    `;
+                    romItem.addEventListener('click', () => handleRomClick(rom, consoleData.code));
+                    romList.appendChild(romItem);
+                });
+
+                consoleHeader.addEventListener('click', () => {
+                    const arrow = consoleHeader.querySelector('.console-arrow');
+                    arrow.classList.toggle('expanded');
+                    romList.classList.toggle('expanded');
+                });
+
+                consoleGroup.appendChild(consoleHeader);
+                consoleGroup.appendChild(romList);
+                romLibrary.appendChild(consoleGroup);
+            }
+
+            if (romLibrary.children.length === 0) {
+                romLibrary.innerHTML = '<p style="text-align: center; padding: 40px; color: rgba(255,255,255,0.7);">No ROMs found</p>';
+            }
+        }
+
+        searchInput.addEventListener('input', function() {
+            renderRomLibrary(this.value);
+        });
+
+        async function handleRomClick(rom, consoleCode) {
+            showStatus('Downloading ROM...', false, true);
+
+            try {
+                if (rom.format === '7z') {
+                    showStatus('7z format requires manual extraction. Download link opened.', false, true);
+                    window.open(rom.url, '_blank');
+                    setTimeout(() => {
+                        showStatus('Please extract the .7z file and upload it manually on the Upload page', false, true);
+                    }, 2000);
+                    return;
+                }
+
+                const response = await fetch(rom.url);
+                if (!response.ok) throw new Error('Download failed');
+
+                const blob = await response.blob();
+
+                if (rom.format === 'zip') {
+                    showStatus('Extracting ZIP file...', false, true);
+                    const zip = new JSZip();
+                    const zipData = await zip.loadAsync(blob);
+                    
+                    const romFiles = Object.keys(zipData.files).filter(filename => 
+                        !filename.endsWith('/') && 
+                        (filename.endsWith('.smc') || filename.endsWith('.sfc') || 
+                         filename.endsWith('.gba') || filename.endsWith('.z64') || 
+                         filename.endsWith('.n64') || filename.endsWith('.gen') || 
+                         filename.endsWith('.md') || filename.endsWith('.bin') ||
+                         filename.endsWith('.nes'))
+                    );
+
+                    if (romFiles.length === 0) {
+                        throw new Error('No ROM file found in ZIP');
+                    }
+
+                    const romFile = zipData.files[romFiles[0]];
+                    const romBlob = await romFile.async('blob');
+                    selectedFile = new File([romBlob], romFiles[0]);
+                } else if (rom.format === 'z64') {
+                    selectedFile = new File([blob], rom.file);
+                } else {
+                    throw new Error('Unsupported format');
+                }
+
+                selectedSystem = consoleCode;
+                systemSelect.value = consoleCode;
+
+                showStatus('ROM loaded! Starting game...', false, true);
+
+                setTimeout(() => {
+                    pagesContainer.classList.remove('show-library');
+                    currentPage = 'upload';
+                    
+                    setTimeout(() => {
+                        gameUrl = URL.createObjectURL(selectedFile);
+                        gameContainer.style.display = 'block';
+                        loadEmulator();
+                    }, 300);
+                }, 1000);
+
+            } catch (error) {
+                console.error('Error handling ROM:', error);
+                showStatus('Error: ' + error.message, true, true);
+            }
+        }
+
+        console.log('EmulatorJS with ROM Library Ready!');
+        console.log('JSZip loaded:', typeof JSZip !== 'undefined');
     </script>
 </body>
 </html>
