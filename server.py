@@ -18,7 +18,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == '/':
-            self.path = '/emulator.html'
+            self.path = '/emulator-standalone.html'
         return super().do_GET()
 
 class ReusableTCPServer(socketserver.TCPServer):
