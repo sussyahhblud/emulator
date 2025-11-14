@@ -1,87 +1,75 @@
 # EmulatorJS - Retro Gaming Emulator
 
 ## Overview
-A single-file HTML retro gaming emulator application that allows users to play classic games from various gaming systems directly in the browser. Built with EmulatorJS, this project provides a beautiful, user-friendly interface for loading and playing ROM files.
+A complete single-file HTML retro gaming emulator powered by EmulatorJS. Play classic games from NES, SNES, Game Boy, GBA, N64, PlayStation 1, and many more systems directly in your browser.
 
-## Project Type
-Static frontend web application - no backend required
-
-## Features
-- Support for 25+ retro gaming systems including:
-  - Nintendo: NES, SNES, N64, Game Boy, GBA, GBC, Nintendo DS
-  - Sega: Genesis/Mega Drive, Master System, Game Gear, Saturn, CD, 32X
-  - PlayStation 1
-  - Atari: 2600, 7800, Lynx, Jaguar
-  - And many more!
-- Local ROM library with pre-loaded games:
-  - Super Mario 64 (N64)
-  - Super Mario Bros. (NES)
-  - Super Mario World (SNES)
-- Drag & drop ROM file upload
-- Save/load game states
-- Keyboard and gamepad controller support
-- Responsive design with modern UI
-
-## Project Structure
-```
-.
-├── emulator-standalone.html  # Main application file with all HTML/CSS/JS
-├── roms/                     # Local ROM files directory
-│   ├── Super Mario 64 (USA).z64
-│   ├── Super Mario Bros. (World).nes
-│   └── Super Mario World (USA).sfc
-├── logo.png                  # Application logo
-├── server.py                 # Python HTTP server for local development
-└── README.md                 # Project description
-```
-
-## Technology Stack
-- **Frontend**: Pure HTML5, CSS3, JavaScript
-- **Emulation**: EmulatorJS (loaded from CDN)
-- **Server**: Python 3.11 with built-in HTTP server
-
-## Development
-The application runs on port 5000 using a simple Python HTTP server that:
-- Serves the static HTML file
-- Redirects root path to emulator-standalone.html
-- Disables caching for development
-- Serves local ROM files from the roms/ directory
+## Current State
+The emulator is fully functional and running on port 5000. Users can:
+- Select from multiple gaming systems (NES, SNES, GB, GBA, Genesis, N64, PS1, etc.)
+- Upload ROM files in various formats (.7z, .zip, and others)
+- Play games with keyboard or gamepad controls
+- Manage a game library with local storage persistence
+- Navigate between setup and library views
 
 ## Recent Changes
-- **2025-11-06**: ROM Library Update
-  - Replaced external ROM manifest with local ROM library
-  - Added 3 local Super Mario games (N64, NES, SNES) in roms/ folder
-  - Updated handleRomClick function to support .nes and .sfc formats
-  - ROM library now loads games from local files instead of external URLs
-  
-- **2025-11-06**: Initial Replit setup
-  - Installed Python 3.11
-  - Created server.py to serve static files on port 5000
-  - Configured workflow for automatic server startup
-  - Added .gitignore for Python projects
-  - Created project documentation
+- **November 14, 2025**: Initial deployment
+  - Copied complete single-file HTML emulator to index.html
+  - Configured Python HTTP server workflow on port 5000
+  - Verified EmulatorJS integration and functionality
 
-## Controls
-- **Keyboard**: Arrow Keys (D-Pad), Z/X (A/B), Enter (Start), Shift (Select)
-- **Save State**: Shift+F2
-- **Load State**: Shift+F4
-- **Gamepad**: Native controller support when connected
+## Project Architecture
 
-## How to Use
-### Option 1: Play Local ROMs (Recommended)
-1. Click the arrow button (➜) in the header to access the ROM Library
-2. Select a game from the local collection
-3. The game will automatically load and start
+### Single-File Structure
+- **index.html**: Complete application with embedded CSS, JavaScript, and dependencies
+  - EmulatorJS CDN integration for emulator cores
+  - JSZip library for archive extraction
+  - libarchive.js for 7z support
+  - LocalStorage API for game library persistence
+  - Modern gradient-based UI with blue theme
 
-### Option 2: Upload Your Own ROMs
-1. Select a gaming system from the dropdown
-2. Upload a ROM file for that system (supports .7z, .zip, and raw ROM files)
-3. Click "Start Game" to begin playing
-4. Use keyboard or gamepad controls
+### Supported Systems
+- Nintendo: NES, SNES, N64, Game Boy, Game Boy Color, Game Boy Advance, Virtual Boy
+- Sega: Genesis/Mega Drive, Master System, Game Gear, Saturn, Dreamcast
+- Sony: PlayStation 1
+- Atari: 2600, 5200, 7800, Lynx, Jaguar
+- Arcade: MAME 2003, Neo Geo Pocket
+- Other: 3DO, WonderSwan, Vectrex
 
-## Dependencies
-- Python 3.11 (for development server only)
-- EmulatorJS CDN (loaded at runtime)
+### Key Features
+- **ROM Upload**: Drag-and-drop or file browser upload
+- **Archive Support**: Automatic extraction of .zip and .7z files
+- **Game Library**: Persistent storage of uploaded games
+- **Responsive Design**: Animated, modern UI with glow effects
+- **Fullscreen Mode**: Optimal gaming experience
+- **Save States**: Managed by EmulatorJS (browser-based)
 
-## Deployment
-This is a static site that can be deployed to any static hosting platform. The deployment is configured to serve the emulator.html file.
+## Technical Details
+
+### Dependencies
+All dependencies are loaded via CDN:
+- EmulatorJS (core emulation library)
+- JSZip 3.10.1 (ZIP file extraction)
+- libarchive.js 1.3.0 (7z and other archive formats)
+
+### Workflow
+- **Name**: emulator
+- **Command**: `python3 -m http.server 5000`
+- **Port**: 5000
+- **Type**: Static file server for single HTML application
+
+## Usage Instructions
+
+1. **Select System**: Choose your gaming platform from the dropdown
+2. **Upload ROM**: Click to browse or drag-and-drop a ROM file
+3. **Start Game**: Click "Start Game" to launch the emulator
+4. **Controls**: Use keyboard or connect a gamepad
+5. **Library**: Access previously uploaded games from the library view
+
+## User Preferences
+None specified yet.
+
+## Notes
+- Entirely client-side application (no backend required)
+- ROMs are stored in browser LocalStorage
+- Compatible with modern browsers supporting WebAssembly
+- File size limits depend on browser storage quotas
